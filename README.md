@@ -55,4 +55,6 @@ This assignment will be assessed in three ways:
     3. Finally, each lab will be evaluated by one of your peers. They will be asked to assess and provide written feedback to another student 
     (worth 0.5% of the final grade).
 
-    Peer evaluations will be used to assess whether or not your code is well-structed and easy to read, whether your documentation makes sense, and whether your tests is sufficient to convince the reader that if all the tests pass then the code it is testing works correctly.
+    Peer evaluations will be used to assess whether or not your code is well-structed and easy to read, 
+    whether your documentation makes sense, and whether your tests is sufficient to convince the reader 
+    that if all the tests pass then the code it is testing works correctly.
