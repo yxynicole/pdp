@@ -16,4 +16,8 @@ public interface Transmission {
    */
   Transmission decreaseSpeed();
 
+  int getSpeed();
+
+  int getGear();
+
 }

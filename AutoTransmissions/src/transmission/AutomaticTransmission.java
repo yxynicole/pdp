@@ -1,7 +1,7 @@
 package transmission;
 
 /**
- *
+ * gear 0-5
  */
 public class AutomaticTransmission implements Transmission {
   private final int speed;
@@ -14,6 +14,11 @@ public class AutomaticTransmission implements Transmission {
 
   /**
    * Constructs a AutomaticTransmission
+   * @param t1
+   * @param t2
+   * @param t3
+   * @param t4
+   * @param t5
    */
   public AutomaticTransmission(int t1, int t2, int t3, int t4, int t5) {
     if (t1 <= 0 || t2 <= t1 || t3 <= t2 || t4 <= t3 || t5 <= t4) {
@@ -29,7 +34,7 @@ public class AutomaticTransmission implements Transmission {
     this.gear = 0;
   }
 
-  public AutomaticTransmission(int speed, int gear, AutomaticTransmission transmission) {
+  private AutomaticTransmission(int speed, int gear, AutomaticTransmission transmission) {
     this.threshold1 = transmission.threshold1;
     this.threshold2 = transmission.threshold2;
     this.threshold3 = transmission.threshold3;
@@ -50,7 +55,7 @@ public class AutomaticTransmission implements Transmission {
 
   private int determineGear(int speed) {
     if (speed < 0) {
-      throw new IllegalArgumentException();
+      throw new IllegalStateException();
     } else if (speed == 0) {
       return 0;
     } else if (speed <= threshold1) {
