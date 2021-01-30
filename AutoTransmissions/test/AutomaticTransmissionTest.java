@@ -1,14 +1,18 @@
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import transmission.AutomaticTransmission;
 import transmission.Transmission;
 
+/**
+ * A Junit test for the AutomaticTransmission class.
+ */
 
 public class AutomaticTransmissionTest {
-  private Transmission increaseSpeed (Transmission transmission, int times ){
-    for (int i = 0; i < times; i++){
+  private Transmission increaseSpeed(Transmission transmission, int times) {
+    for (int i = 0; i < times; i++) {
       transmission = transmission.increaseSpeed();
     }
     return transmission;
@@ -45,38 +49,38 @@ public class AutomaticTransmissionTest {
   }
 
   @Test
-  public void testGetSpeed(){
+  public void testGetSpeed() {
     AutomaticTransmission at = new AutomaticTransmission(5, 10, 15, 20, 25);
     assertEquals(0, at.getSpeed());
   }
 
   @Test
-  public void testGetGear(){
+  public void testGetGear() {
     AutomaticTransmission at = new AutomaticTransmission(5, 10, 15, 20, 25);
     assertEquals(0, at.getGear());
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearOne(){
+  public void testIncreaseSpeedReturnsGearOne() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,1);
+    transmission = this.increaseSpeed(transmission, 1);
     assertEquals(2, transmission.getSpeed());
     assertEquals(1, transmission.getGear());
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearTwo(){
+  public void testIncreaseSpeedReturnsGearTwo() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,3);
+    transmission = this.increaseSpeed(transmission, 3);
 
     assertEquals(6, transmission.getSpeed());
     assertEquals(2, transmission.getGear());
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearThree(){
+  public void testIncreaseSpeedReturnsGearThree() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,6);
+    transmission = this.increaseSpeed(transmission, 6);
 
     assertEquals(12, transmission.getSpeed());
     assertEquals(3, transmission.getGear());
@@ -84,9 +88,9 @@ public class AutomaticTransmissionTest {
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearFour(){
+  public void testIncreaseSpeedReturnsGearFour() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,8);
+    transmission = this.increaseSpeed(transmission, 8);
 
     assertEquals(16, transmission.getSpeed());
     assertEquals(4, transmission.getGear());
@@ -94,9 +98,9 @@ public class AutomaticTransmissionTest {
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearFive(){
+  public void testIncreaseSpeedReturnsGearFive() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,11);
+    transmission = this.increaseSpeed(transmission, 11);
 
     assertEquals(22, transmission.getSpeed());
     assertEquals(5, transmission.getGear());
@@ -104,25 +108,35 @@ public class AutomaticTransmissionTest {
   }
 
   @Test
-  public void testIncreaseSpeedReturnsGearSix(){
+  public void testIncreaseSpeedReturnsGearSix() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,13);
+    transmission = this.increaseSpeed(transmission, 13);
 
     assertEquals(26, transmission.getSpeed());
     assertEquals(6, transmission.getGear());
 
   }
 
-  @Test(expected =IllegalStateException.class)
-  public void testDecreaseSpeedThrowsIllegalStateExceptionIfspeedLessThanZero(){
+  @Test(expected = IllegalStateException.class)
+  public void testDecreaseSpeedThrowsIllegalStateExceptionIfspeedLessThanZero() {
     AutomaticTransmission at = new AutomaticTransmission(5, 10, 15, 20, 25);
     Transmission transmission = at.decreaseSpeed();
   }
 
   @Test
-  public void testDecreaseSpeedReturnsGearFive(){
+  public void testDecreaseSpeedReturnsGearZero() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,13);
+    transmission = this.increaseSpeed(transmission, 1);
+    transmission = transmission.decreaseSpeed();
+
+    assertEquals(0, transmission.getSpeed());
+    assertEquals(0, transmission.getGear());
+  }
+
+  @Test
+  public void testDecreaseSpeedReturnsGearFive() {
+    Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
+    transmission = this.increaseSpeed(transmission, 13);
     transmission = transmission.decreaseSpeed();
 
     assertEquals(24, transmission.getSpeed());
@@ -130,9 +144,9 @@ public class AutomaticTransmissionTest {
   }
 
   @Test
-  public void testToString(){
+  public void testToString() {
     Transmission transmission = new AutomaticTransmission(5, 10, 15, 20, 25);
-    transmission = this.increaseSpeed(transmission,13);
+    transmission = this.increaseSpeed(transmission, 13);
     transmission = transmission.decreaseSpeed();
 
     assertTrue("Transmission (speed = 24, gear = 5)".equals(transmission.toString()));
