@@ -28,6 +28,7 @@ Design an interface called `Transmission` that represents a single car transmiss
 ### Takeaways
 #### AutomaticTransmission.java
 - The gear thresholds can be stored in an array
+- methods that are tagged with @Override should only have documentation if they contain functionality beyond what is described in the original documentation. 
 #### AutomaticTransmissionTest.java
 - When I intend to test that increasing speed affects the gear, I should not only include test cases that cause the gear value to change from  one to another but also cases that cause the gear value to stay the same. For example, the test increasing speed causing gear to go from 1 to 2 and the test increasing speed causing gear go from ** 1 to 1 ** should both be included.
 - Using Junit assertion to test that the transmission cannot decrease speed below 0
