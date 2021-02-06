@@ -2,8 +2,6 @@
 ### About/Overview. 
 This program implements a tracking system for a Reptile Houses which house reptiles and amphibians in a number of different habitats.
 
-### List of features. List all features that are working perfectly in your program.
-
 ### How To Run
 		cick run and no argument is needed to run the jar file.
         
