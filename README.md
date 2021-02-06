@@ -3,7 +3,7 @@
 This program implements a tracking system for a Reptile Houses which house reptiles and amphibians in a number of different habitats.
 
 ### How To Run
-		cick run and no argument is needed to run the jar file.
+click run and no argument is needed to run the jar file.
         
 ### How to Use the Program 
 Please refer to drive class
