@@ -24,8 +24,8 @@ In drive class,
 2. I avoided using an enumeration to categorize reptile and amphibian. Instead I used inheritance instead.
 
 ### Assumptions.
-	- assume animal size same
-	- time complexity is not optimal
-	- the report can be only printed on standard output
-	- there is no interactive uesrinterface
+	- The animals of the same spcies have the same body size. For example, if a tree frog is small, then every instance of tree frog is in small size.
+	- Time complexity is not optimal.
+	- The report can be only printed on standard output
+	- There is no interactive uesr interface.
 
