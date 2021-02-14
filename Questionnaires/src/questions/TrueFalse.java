@@ -1,12 +1,11 @@
 package questions;
 
-import java.util.Arrays;
 
 /**
  * True/False, a type of question, can be answered in one of two ways: true or false.
  */
 public class TrueFalse extends AbstractQuestion {
-  private final int correctAnswer;
+  private final String correctAnswer;
 
   /**
    * Constructs a TrueOrFalse question.
@@ -14,22 +13,15 @@ public class TrueFalse extends AbstractQuestion {
    * @param text          the text of the question itself
    * @param correctAnswer the correct answer of this question that is either true or false
    */
-  public TrueFalse(String text, int correctAnswer) {
-    super(text, Arrays.asList("1-True", "2-False"));
-    if (correctAnswer < 1 || correctAnswer > 2) {
-      throw new IllegalArgumentException("Only 1(True) or 2(false) is allowed as correct answer");
-    }
+  public TrueFalse(String text, String correctAnswer) {
+    super(text, new String[]{"1-True", "2-False"});
     this.correctAnswer = correctAnswer;
   }
 
 
   @Override
   public String answer(String answer) {
-    int answerInt = AbstractQuestion.getAnswerInt(answer);
-    if (answerInt < 1 || answerInt > 2) {
-      throw new IllegalArgumentException("You can only choose from 1 and 2");
-    }
-    if (this.correctAnswer == answerInt) {
+    if (this.correctAnswer.equals(answer)) {
       return "Correct";
     } else {
       return "Incorrect";

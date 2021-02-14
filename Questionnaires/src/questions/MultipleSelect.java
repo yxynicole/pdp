@@ -1,39 +1,30 @@
 package questions;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * MultipleSelect, a type of question,  offers several options, but there are multiple correct
  * answers.
  */
 public class MultipleSelect extends AbstractQuestion {
-  private final Set<Integer> correctAnswers;
+  private final String correctAnswers;
 
   /**
    * Constructs a MultipleSelect instance.
    *
    * @param text           the question description itself.
-   * @param options        the options of this question.
    * @param correctAnswers the correct answers of this question.
+   * @param options        the options of this question.
    */
-  public MultipleSelect(String text, List<String> options, List<Integer> correctAnswers) {
+  public MultipleSelect(String text, String correctAnswers, String... options) {
     super(text, options);
-    if (options.size() < 3 || options.size() > 8) {
-      throw new IllegalArgumentException(" A question may have _at least 3 options, but no more than 8_ ");
+    if (options.length < 3 || options.length > 8) {
+      throw new IllegalArgumentException("A question has at least 3 options, but no more than 8");
     }
-    this.correctAnswers = new HashSet<>(correctAnswers);
+    this.correctAnswers = correctAnswers;
   }
 
   @Override
   public String answer(String answer) {
-    String[] splitUserAnswers = answer.split(" ");
-    Set<Integer> userAnswers = new HashSet<>();
-    for (String a : splitUserAnswers) {
-      userAnswers.add(AbstractQuestion.getAnswerInt(a));
-    }
-    if (correctAnswers.equals(userAnswers)) {
+    if (correctAnswers.equals(answer)) {
       return "Correct";
     } else {
       return "Incorrect";

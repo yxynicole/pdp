@@ -1,12 +1,11 @@
 package questions;
 
-import java.util.List;
 
 /**
  * MultipleChoice, a type of question, offers several options, only one of which is correct.
  */
 public class MultipleChoice extends AbstractQuestion {
-  private final int correctAnswer;
+  private final String correctAnswer;
 
   /**
    * Constructs a multipleChoice object.
@@ -15,10 +14,10 @@ public class MultipleChoice extends AbstractQuestion {
    * @param options       the options of this question
    * @param correctAnswer the correct answer of this question
    */
-  public MultipleChoice(String text, List<String> options, int correctAnswer) {
+  public MultipleChoice(String text, String correctAnswer, String... options) {
     super(text, options);
-    if (options.size() < 3 || options.size() > 8) {
-      throw new IllegalArgumentException(" A question may have _at least 3 options, but no more than 8_ ");
+    if (options.length < 3 || options.length > 8) {
+      throw new IllegalArgumentException("A question has at least 3 options, but no more than 8");
     }
     this.correctAnswer = correctAnswer;
   }
@@ -29,7 +28,7 @@ public class MultipleChoice extends AbstractQuestion {
     if (answerInt <= 0) {
       throw new IllegalArgumentException("Answer has to be positive number.");
     }
-    if (this.correctAnswer == answerInt) {
+    if (this.correctAnswer.equals(answer)) {
       return "Correct";
     } else {
       return "Incorrect";

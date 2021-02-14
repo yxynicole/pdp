@@ -1,7 +1,5 @@
 package questions;
 
-import java.util.Arrays;
-
 /**
  * Likert, a type of question, can be answered on a fixed, 5-point Likert scale (Strongly Agree,
  * Agree, Neither Agree nor Disagree, Disagree, Strongly Disagree).
@@ -13,10 +11,10 @@ public class Likert extends AbstractQuestion {
    * @param text the question description itself
    */
   public Likert(String text) {
-    super(text, Arrays.asList(
-            "1-Strongly Agree", "2-Agree",
-            "3-Neither Agree nor Disagree", "4-Disagree",
-            "5-Strongly Disagree"));
+    super(text, new String[]{
+        "1-Strongly Agree", "2-Agree",
+        "3-Neither Agree nor Disagree", "4-Disagree",
+        "5-Strongly Disagree"});
   }
 
   @Override

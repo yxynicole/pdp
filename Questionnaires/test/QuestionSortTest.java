@@ -16,18 +16,15 @@ public class QuestionSortTest {
 
   @Test
   public void testSortQuestions() {
-    Question tf = new TrueFalse("1+1=2", 1);
+    Question tf = new TrueFalse("1+1=2", "True");
 
-    Question mc = new MultipleChoice("What year is it? ",
-            Arrays.asList("1-2008", "2-2012", "3-2020", "4-2021"),
-            4);
+    Question mc = new MultipleChoice("What year is it? ", "4",
+            "1-2008", "2-2012", "3-2020", "4-2021");
 
-    Question ms = new MultipleSelect("What course do you like?",
-            Arrays.asList("1-CS5010", "2-CS5600", "3-CS5700", "4-Cake"),
-            Arrays.asList(1, 2, 3));
+    Question ms = new MultipleSelect("What course do you like?", "1 2 3",
+            "1-CS5010", "2-CS5600", "3-CS5700", "4-Cake");
 
     Question likert = new Likert("Do you like CS?");
-
     Question[] questionnaire = {likert, mc, ms, tf,};
     Arrays.sort(questionnaire);
 

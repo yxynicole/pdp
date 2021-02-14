@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 
 import questions.Likert;
 import questions.MultipleChoice;
@@ -63,23 +62,21 @@ public class LikertTest {
 
   @Test
   public void testCompareToMultipleChoiceReturnsPositive() {
-    Question another = new MultipleChoice("What year it is", Arrays.asList(
-            "1-2020", "2-2021", "3-2022", "4-2023"
-    ), 2);
+    Question another = new MultipleChoice("What year it is", "2",
+            "1-2020", "2-2021", "3-2022", "4-2023");
     Assert.assertTrue(question.compareTo(another) > 0);
   }
 
   @Test
   public void testCompareToTrueOrFalseReturnsPositive() {
-    Question another = new TrueFalse("Does one plus one equal two", 1);
+    Question another = new TrueFalse("Does one plus one equal two", "True");
     Assert.assertTrue(question.compareTo(another) > 0);
   }
 
   @Test
   public void testCompareToMultipleSelectReturnsPositive() {
-    Question likert = new MultipleSelect("What course do you like?",
-            Arrays.asList("1-CS5010", "2-CS5600", "3-CS5700", "4-Cake"),
-            Arrays.asList(1, 2, 3));
+    Question likert = new MultipleSelect("What course do you like?", "1 2 3",
+            "1-CS5010", "2-CS5600", "3-CS5700", "4-Cake");
     Assert.assertTrue(question.compareTo(likert) > 0);
   }
 

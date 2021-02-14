@@ -1,13 +1,12 @@
 package questions;
 
-import java.util.List;
 
 /**
  * A skeleton class for question implementation.
  */
 abstract class AbstractQuestion implements Question {
   String text;// the description of the question
-  List<String> options;
+  String[] options;
 
   /**
    * Parses input into integer.
@@ -25,7 +24,7 @@ abstract class AbstractQuestion implements Question {
    * @param text    the question description itself
    * @param options options of this question
    */
-  public AbstractQuestion(String text, List<String> options) {
+  public AbstractQuestion(String text, String[] options) {
     this.text = text;
     this.options = options;
   }

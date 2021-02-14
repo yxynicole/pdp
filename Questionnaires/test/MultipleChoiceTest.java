@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 
 import questions.Likert;
 import questions.MultipleChoice;
@@ -19,9 +18,8 @@ public class MultipleChoiceTest {
 
   @Before
   public void setup() {
-    question = new MultipleChoice("What year it is", Arrays.asList(
-            "1-2020", "2-2021", "3-2022", "4-2023"
-    ), 2);
+    question = new MultipleChoice("What year is it? ", "4",
+            "1-2008", "2-2012", "3-2020", "4-2021");
   }
 
   @Test
@@ -48,39 +46,35 @@ public class MultipleChoiceTest {
 
   @Test
   public void testCompareToAnotherMultipleChoiceReturnsZero() {
-    Question another = new MultipleChoice("What year it is", Arrays.asList(
-            "1-2020", "2-2021", "3-2022", "4-2023"
-    ), 2);
+    Question another = new MultipleChoice("What year is it? ", "4",
+            "1-2008", "2-2012", "3-2020", "4-2021");
     Assert.assertEquals(0, question.compareTo(another));
   }
 
   @Test
   public void testCompareToAnotherMultipleChoiceReturnsPositive() {
-    Question another = new MultipleChoice("Ahat year it is", Arrays.asList(
-            "1-2020", "2-2021", "3-2022", "4-2023"
-    ), 2);
+    Question another = new MultipleChoice("Ahat year is it? ", "4",
+            "1-2008", "2-2012", "3-2020", "4-2021");
     Assert.assertTrue(question.compareTo(another) > 0);
   }
 
   @Test
   public void testCompareToAnotherMultipleChoiceReturnsNegative() {
-    Question another = new MultipleChoice("Zhat year it is", Arrays.asList(
-            "1-2020", "2-2021", "3-2022", "4-2023"
-    ), 2);
+    Question another = new MultipleChoice("Zhat year is it? ", "4",
+            "1-2008", "2-2012", "3-2020", "4-2021");
     Assert.assertTrue(question.compareTo(another) < 0);
   }
 
   @Test
   public void testCompareToTrueOrFalseReturnsPositive() {
-    Question another = new TrueFalse("Does one plus one equal two", 1);
+    Question another = new TrueFalse("Does one plus one equal two", "True");
     Assert.assertTrue(question.compareTo(another) > 0);
   }
 
   @Test
   public void testCompareToMultipleSelectionReturnsNegative() {
-    Question another = new MultipleSelect("What course do you like?",
-            Arrays.asList("1-CS5010", "2-CS5600", "3-CS5700", "4-Cake"),
-            Arrays.asList(1, 2, 3));
+    Question another = new MultipleSelect("What course do you like?", "1 2 3",
+            "1-CS5010", "2-CS5600", "3-CS5700", "4-Cake");
     Assert.assertTrue(question.compareTo(another) < 0);
   }
 
@@ -92,17 +86,17 @@ public class MultipleChoiceTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorTooManyArgument() {
-    new MultipleChoice("Test", Arrays.asList("1", "2", "3", "1", "2", "3", "1", "2", "3"), 1);
+    new MultipleChoice("Test", "1", "1", "2", "3", "1", "2", "3", "1", "2", "3");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorTooFewArgument() {
-    new MultipleChoice("Test", Arrays.asList("1", "2"), 1);
+    new MultipleChoice("Test", "1", "1", "2");
   }
 
   @Test
   public void testAnswerCorrect() {
-    String result = question.answer("2");
+    String result = question.answer("4");
     Assert.assertEquals(Question.CORRECT, result);
   }
 
